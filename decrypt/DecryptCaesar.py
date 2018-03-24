@@ -12,7 +12,6 @@ def lambda_handler(event, context):
     :param context: metadata associated with this Lambda/Step Function execution
     :return: a dictionary passed back to Lambda containing the input data, decrypted text, and confidence
     """
-    output = {}
     text = str(event["inputText"])
 
     scorer = NgramFrequencyScorer(freq=ENGLISH_DIGRAMS)
@@ -26,6 +25,10 @@ def lambda_handler(event, context):
     # Sort by score, descending order
     scored_shifts.sort(reverse=True)
 
-    output["decrypted"] = scored_shifts[0]
+    output = {
+        "method": "etao-decryptCaesar",
+        "confidence": scored_shifts[0][0],
+        "data": scored_shifts[0][1]
+    }
 
     return output

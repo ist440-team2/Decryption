@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fffce0fe-7d12-4dee-8db0-1fef16af90ae" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/DecryptionEtao.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/decrypt/DecryptCaesar.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/decrypt/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/tests/TestDecryptCaesar.py" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/tests/TestDecryptCaesar.py" afterPath="$PROJECT_DIR$/tests/TestDecryptCaesar.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,12 +13,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="DecryptCaesar.py" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="DecryptCaesar.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/decrypt/DecryptCaesar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="60">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding>
                 <element signature="e#23#74#0" expanded="true" />
               </folding>
@@ -31,14 +26,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestDecryptCaesar.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TestDecryptCaesar.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/TestDecryptCaesar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+            <state relative-caret-position="210">
+              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="freq.py" pinned="false" current-in-tab="false">
+        <entry file="file:///Library/Python/2.7/site-packages/etao-0.6.0-py2.7.egg/etao/freq.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1140">
+              <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -62,12 +67,12 @@
         <option value="$PROJECT_DIR$/decrypt/caesar.py" />
         <option value="$PROJECT_DIR$/decrypt/test_caesar.py" />
         <option value="$PROJECT_DIR$/tests/test_caesar.py" />
-        <option value="$PROJECT_DIR$/tests/TestDecryptCaesar.py" />
         <option value="$PROJECT_DIR$/decrypt/DecryptCaesar.py" />
+        <option value="$PROJECT_DIR$/tests/TestDecryptCaesar.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="777" />
@@ -90,7 +95,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -113,11 +117,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -225,8 +230,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests for TestDecryptCaesar.TestCaesar.test_lambda_handler" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in TestDecryptCaesar.py" />
-        <item index="2" class="java.lang.String" itemvalue="Python.TestDecryptCaesar" />
+        <item index="1" class="java.lang.String" itemvalue="Python.TestDecryptCaesar" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in TestDecryptCaesar.py" />
         <item index="3" class="java.lang.String" itemvalue="Python.DecryptCaesar" />
         <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for TestDecryptCaesar.TestCaesar" />
       </list>
@@ -249,57 +254,57 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.22 at 19h 49m 51s.xml">
+    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.23 at 20h 54m 17s.xml">
       <configuration name="Unittests for TestDecryptCaesar.TestCaesar.test_lambda_handler" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.22 at 19h 50m 33s.xml">
+    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.23 at 20h 58m 10s.xml">
       <configuration name="Unittests for TestDecryptCaesar.TestCaesar.test_lambda_handler" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.22 at 19h 50m 54s.xml">
+    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.23 at 20h 58m 29s.xml">
       <configuration name="Unittests for TestDecryptCaesar.TestCaesar.test_lambda_handler" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.22 at 19h 51m 35s.xml">
+    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.23 at 21h 12m 31s.xml">
       <configuration name="Unittests for TestDecryptCaesar.TestCaesar.test_lambda_handler" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.22 at 19h 53m 00s.xml">
+    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.23 at 21h 14m 08s.xml">
       <configuration name="Unittests for TestDecryptCaesar.TestCaesar.test_lambda_handler" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.22 at 19h 53m 32s.xml">
+    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.23 at 21h 15m 46s.xml">
       <configuration name="Unittests for TestDecryptCaesar.TestCaesar.test_lambda_handler" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.22 at 19h 55m 01s.xml">
+    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.23 at 21h 17m 32s.xml">
       <configuration name="Unittests for TestDecryptCaesar.TestCaesar.test_lambda_handler" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.22 at 19h 55m 39s.xml">
+    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.23 at 21h 18m 16s.xml">
       <configuration name="Unittests for TestDecryptCaesar.TestCaesar.test_lambda_handler" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.22 at 19h 55m 47s.xml">
+    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.23 at 21h 19m 24s.xml">
       <configuration name="Unittests for TestDecryptCaesar.TestCaesar.test_lambda_handler" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.22 at 19h 56m 42s.xml">
+    <history-entry file="Unittests_for_TestDecryptCaesar_TestCaesar_test_lambda_handler - 2018.03.23 at 21h 19m 55s.xml">
       <configuration name="Unittests for TestDecryptCaesar.TestCaesar.test_lambda_handler" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="777" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="777" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991204" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32991204" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.398827" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.398827" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -311,30 +316,59 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/decrypt/DecryptVigenere.py">
+    <entry file="file://$PROJECT_DIR$/decrypt/DecryptCaesar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="60">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Python/2.7/site-packages/etao-0.6.0-py2.7.egg/etao/freq.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/TestDecryptCaesar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        <state relative-caret-position="255">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/decrypt/DecryptVigenere.py" />
     <entry file="file://$PROJECT_DIR$/decrypt/DecryptCaesar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state relative-caret-position="60">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
             <element signature="e#23#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Python/2.7/site-packages/etao-0.6.0-py2.7.egg/etao/freq.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/TestDecryptCaesar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>

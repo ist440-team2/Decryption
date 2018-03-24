@@ -20,7 +20,7 @@ class TestCaesar(TestCase):
 
     def test_lambda_handler(self):
         for test_case in test_cases:
-            result = DecryptCaesar.lambda_handler({"inputText": test_case[1]}, test_context)
+            result = DecryptCaesar.lambda_handler(test_case[1], test_context)
         self.assertEqual(test_case[2], result["data"])
         self.assertEqual(test_method, result["method"])
         self.assertTrue(result["confidence"] >= 0)

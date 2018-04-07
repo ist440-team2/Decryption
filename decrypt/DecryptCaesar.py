@@ -8,7 +8,7 @@ def lambda_handler(event, context):
     """
     Invoked by Lambda
 
-    :param event: a string containing the output of the OCR step
+    :param event: contains the S3 bucket and key for the OCR file to be decrypted
     :param context: metadata associated with this Lambda/Step Function execution
     :return: a dictionary passed back to Lambda containing the input data, decrypted text, and confidence
     """

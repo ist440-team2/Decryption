@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import boto3
 from etao import CaesarCipher, NgramFrequencyScorer
 from etao.freq import ENGLISH_DIGRAMS
 
@@ -12,7 +13,9 @@ def lambda_handler(event, context):
     :param context: metadata associated with this Lambda/Step Function execution
     :return: a dictionary passed back to Lambda containing the input data, decrypted text, and confidence
     """
-    text = str(event)
+
+
+    text = get_text(event["bucket"], event["key"])
 
     scorer = NgramFrequencyScorer(freq=ENGLISH_DIGRAMS)
     # Get every Caesar shift of the ciphertext
@@ -32,3 +35,20 @@ def lambda_handler(event, context):
     }
 
     return output
+
+
+def get_text(bucket, key):
+    """
+    Retrieves the specified file in S3 containing the text output by the OCR module
+
+    :param bucket: the S3 bucket
+    :param key: the S3 key (file name)
+    :return: a string containing the text
+    """
+    s3 = boto3.resource("s3")
+
+    ocr_obj = s3.Object(bucket,key)
+    response = ocr_obj.get()
+    data = response["Body"].read()
+
+    return data

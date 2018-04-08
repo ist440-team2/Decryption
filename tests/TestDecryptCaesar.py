@@ -1,5 +1,6 @@
 from unittest import TestCase
 from decrypt import DecryptCaesar
+import boto3
 
 test_cases = [
     ("english_simple",
@@ -15,6 +16,7 @@ test_cases = [
 ]
 test_context = {"test": "test"}
 test_method = "etao-decryptCaesar"
+output_bucket = "ist440grp2-decrypted"
 
 
 class TestCaesar(TestCase):
@@ -30,11 +32,23 @@ class TestCaesar(TestCase):
                 "key": test_case[2]
             }
 
+            # test the lambda function's output
             result = DecryptCaesar.lambda_handler(event, test_context)
-            self.assertEqual(test_case[4], result["data"])
+            self.assertEqual(output_bucket, result["decrypted_bucket"])
+            self.assertEqual(test_case[2], result["decrypted_key"])
             self.assertEqual(test_method, result["method"])
             self.assertTrue(result["confidence"] >= 0)
             self.assertTrue(result["confidence"] <= 1)
+
+            # test the output written to s3
+            s3 = boto3.resource("s3")
+            obj = s3.Object(result["decrypted_bucket"], result["decrypted_key"])
+            response = obj.get()
+            data = response["Body"].read()
+            self.assertEqual(test_case[4], data)
+
+            # clean up
+            s3.Object(result["decrypted_bucket"], result["decrypted_key"]).delete()
 
     def test_get_text(self):
         DecryptCaesar.get_text("ist440grp2ocr", "jen_zodiacTest1.txt")

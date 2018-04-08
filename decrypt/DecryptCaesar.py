@@ -28,10 +28,13 @@ def lambda_handler(event, context):
     # Sort by score, descending order
     scored_shifts.sort(reverse=True)
 
+    save_text("ist440grp2-decrypted", event["key"], scored_shifts[0][1])
+
     output = {
         "method": "etao-decryptCaesar",
         "confidence": scored_shifts[0][0],
-        "data": scored_shifts[0][1]
+        "decrypted_bucket": "ist440grp2-decrypted",
+        "decrypted_key": event["key"]
     }
 
     return output
@@ -52,3 +55,16 @@ def get_text(bucket, key):
     data = response["Body"].read()
 
     return data
+
+
+def save_text(bucket, key, data):
+    """
+    Saves data to S3
+    :param bucket: the S3 bucket
+    :param key: the S3 key (file name)
+    :param data: the data to save
+    :return:
+    """
+
+    s3 = boto3.resource("s3")
+    s3.Bucket(bucket).put_object(Key=key, Body=data)

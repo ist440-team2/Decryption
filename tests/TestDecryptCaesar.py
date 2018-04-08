@@ -1,5 +1,5 @@
 from unittest import TestCase
-from decrypt import DecryptCaesar
+import DecryptCaesar
 import boto3
 
 test_cases = [

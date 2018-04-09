@@ -4,6 +4,7 @@ import boto3
 from etao import CaesarCipher, NgramFrequencyScorer
 from etao.freq import ENGLISH_DIGRAMS
 
+method = "etao-decryptCaesar"
 
 def lambda_handler(event, context):
     """
@@ -14,6 +15,7 @@ def lambda_handler(event, context):
     :return: a dictionary passed back to Lambda containing the input data, decrypted text, and confidence
     """
 
+    output_key = event["key"] + "_" + method
 
     text = get_text(event["bucket"], event["key"])
 
@@ -31,7 +33,7 @@ def lambda_handler(event, context):
     save_text("ist440grp2-decrypted", event["key"], scored_shifts[0][1])
 
     output = {
-        "method": "etao-decryptCaesar",
+        "method": method,
         "confidence": scored_shifts[0][0],
         "decrypted_bucket": "ist440grp2-decrypted",
         "decrypted_key": event["key"]

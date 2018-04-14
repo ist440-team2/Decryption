@@ -35,8 +35,9 @@ def lambda_handler(event, context):
     output = {
         "method": method,
         "confidence": scored_shifts[0][0],
-        "decrypted_bucket": "ist440grp2-decrypted",
-        "decrypted_key": event["key"]
+        "decryptedBucket": "ist440grp2-decrypted",
+        "decryptedKey": event["key"],
+        "sourceLanguage": "en"
     }
 
     return output

@@ -4,7 +4,6 @@ import boto3
 from etao import CaesarCipher, NgramFrequencyScorer
 from etao.freq import ENGLISH_DIGRAMS
 
-method = "etao-decryptCaesar"
 
 def lambda_handler(event, context):
     """
@@ -15,9 +14,26 @@ def lambda_handler(event, context):
     :return: a dictionary passed back to Lambda containing the input data, decrypted text, and confidence
     """
 
-    output_key = event["key"] + "_" + method
+    method = "Caesar"
+    output_bucket = "ist440grp2-decrypted"
+    output_key_pattern = "%s_%s_%s"
 
-    text = get_text(event["bucket"], event["key"])
+    try:
+        input_bucket = event["bucket"]
+        input_key = event["key"]
+    except KeyError:
+        print("Bucket and key are required")
+        exit(1)
+
+    try:
+        language = event["sourceLanguage"]
+    except KeyError:
+        print("Source language missing, assuming English")
+        language = "en"
+
+    output_key = output_key_pattern % (input_key, method, language)
+
+    text = get_text(input_bucket, input_key)
 
     scorer = NgramFrequencyScorer(freq=ENGLISH_DIGRAMS)
     # Get every Caesar shift of the ciphertext
@@ -30,13 +46,13 @@ def lambda_handler(event, context):
     # Sort by score, descending order
     scored_shifts.sort(reverse=True)
 
-    save_text("ist440grp2-decrypted", event["key"], scored_shifts[0][1])
+    save_text(output_bucket, output_key, scored_shifts[0][1])
 
     output = {
         "method": method,
         "confidence": scored_shifts[0][0],
-        "decryptedBucket": "ist440grp2-decrypted",
-        "decryptedKey": event["key"],
+        "decryptedBucket": output_bucket,
+        "decryptedKey": output_key,
         "sourceLanguage": "en"
     }
 

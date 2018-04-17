@@ -15,7 +15,7 @@ test_cases = [
      "THIS IS TEXT THAT CONTAINS A GARBAGE SALKDJFLSKADJF WORD.")
 ]
 test_context = {"test": "test"}
-test_method = "etao-decryptCaesar"
+test_method = "Caesar"
 output_bucket = "ist440grp2-decrypted"
 
 
@@ -34,21 +34,28 @@ class TestCaesar(TestCase):
 
             # test the lambda function's output
             result = DecryptCaesar.lambda_handler(event, test_context)
-            self.assertEqual(output_bucket, result["decrypted_bucket"])
-            self.assertEqual(test_case[2], result["decrypted_key"])
+            self.assertEqual(output_bucket, result["decryptedBucket"])
+            self.assertEqual(test_case[2] + "_Caesar_en", result["decryptedKey"])
             self.assertEqual(test_method, result["method"])
             self.assertTrue(result["confidence"] >= 0)
             self.assertTrue(result["confidence"] <= 1)
 
             # test the output written to s3
             s3 = boto3.resource("s3")
-            obj = s3.Object(result["decrypted_bucket"], result["decrypted_key"])
+            obj = s3.Object(result["decryptedBucket"], result["decryptedKey"])
             response = obj.get()
             data = response["Body"].read()
             self.assertEqual(test_case[4], data)
 
             # clean up
-            s3.Object(result["decrypted_bucket"], result["decrypted_key"]).delete()
+            s3.Object(result["decryptedBucket"], result["decryptedKey"]).delete()
 
     def test_get_text(self):
         DecryptCaesar.get_text("ist440grp2ocr", "jen_zodiacTest1.txt")
+
+    def test_missingBucket(self):
+        input = {
+            "key": "test"
+        }
+        result = DecryptCaesar.lambda_handler(input, test_context)
+        self.assertIsNotNone(result)

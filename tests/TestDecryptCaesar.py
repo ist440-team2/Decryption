@@ -17,14 +17,15 @@ class TestCaesar(TestCase):
 
         for test_case in test_cases:
             event = {
-                "bucket": test_case[1],
-                "key": test_case[2]
+                "bucket": test_case["ocr_bucket"],
+                "key": test_case["ocr_key"],
+                "sourceLanguage": test_case["language"]
             }
 
             # test the lambda function's output
             result = DecryptCaesar.lambda_handler(event, test_context)
             self.assertEqual(output_bucket, result["decryptedBucket"])
-            self.assertEqual(test_case[2] + "_Caesar_en", result["decryptedKey"])
+            self.assertEqual(test_case["ocr_key"] + "_Caesar_en", result["decryptedKey"])
             self.assertEqual(test_method, result["method"])
             self.assertTrue(result["confidence"] >= 0)
             self.assertTrue(result["confidence"] <= 1)
@@ -34,7 +35,7 @@ class TestCaesar(TestCase):
             obj = s3.Object(result["decryptedBucket"], result["decryptedKey"])
             response = obj.get()
             data = response["Body"].read()
-            self.assertEqual(test_case[4], data)
+            self.assertEqual(test_case["decrypted"], data)
 
             # clean up
             s3.Object(result["decryptedBucket"], result["decryptedKey"]).delete()

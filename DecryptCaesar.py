@@ -56,7 +56,7 @@ def lambda_handler(event, context):
         "confidence": scored_shifts[0][0],
         "decryptedBucket": output_bucket,
         "decryptedKey": output_key,
-        "sourceLanguage": "en"
+        "sourceLanguage": language
     }
 
     return output

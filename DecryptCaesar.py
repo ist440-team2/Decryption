@@ -37,8 +37,9 @@ def lambda_handler(event, context):
     text = get_text(input_bucket, input_key)
 
     scorer = NgramFrequencyScorer(freq=lang_di(language))
+
     # Get every Caesar shift of the ciphertext
-    shifts = [CaesarCipher(n).decrypt(text) for n in range(len(lang_freq(language)))]
+    shifts = [CaesarCipher(n).decrypt(text) for n in range(25)]
 
     # Score each shift according to English character frequency.
     # Get tuples that pair the score with the text.

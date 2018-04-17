@@ -14,5 +14,27 @@ test_cases = [
         "language"      : "en",
         "encrypted"     : "aopz pz alea aoha jvuahpuz h nhyihnl zhsrkqmszrhkqm dvyk.",
         "decrypted"     : "THIS IS TEXT THAT CONTAINS A GARBAGE SALKDJFLSKADJF WORD."
+    },
+    {
+        "name"          : "spanish",
+        "ocr_bucket"    : "ist440grp2ocr",
+        "ocr_key"       : "jen_spanish",
+        "language"      : "es",
+        "encrypted"     : "Qr vrb dvhvlqr",
+        "decrypted"     : "NO SOY ASESINO"
+    },
+{
+        "name"          : "french",
+        "ocr_bucket"    : "ist440grp2ocr",
+        "ocr_key"       : "jen_french",
+        "language"      : "fr",
+        "encrypted"     : '''Krnw vxrwb sjuxdg mn unda bdaerean
+Zdn mn yjacjpna unda lnaldnru,
+Wxdb jdaxwb un bdkurvn xapdnru
+Mn unb enwpna xd mn unb bdrean''',
+        "decrypted"     : '''BIEN MOINS JALOUX DE LEUR SURVIVRE
+QUE DE PARTAGER LEUR CERCUEIL,
+NOUS AURONS LE SUBLIME ORGUEIL
+DE LES VENGER OU DE LES SUIVRE'''
     }
 ]

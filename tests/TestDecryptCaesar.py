@@ -25,7 +25,7 @@ class TestCaesar(TestCase):
             # test the lambda function's output
             result = DecryptCaesar.lambda_handler(event, test_context)
             self.assertEqual(output_bucket, result["decryptedBucket"])
-            self.assertEqual(test_case["ocr_key"] + "_Caesar_en", result["decryptedKey"])
+            self.assertEqual("%s_%s_%s" % (test_case["ocr_key"], "Caesar", test_case["language"]), result["decryptedKey"])
             self.assertEqual(test_method, result["method"])
             self.assertTrue(result["confidence"] >= 0)
             self.assertTrue(result["confidence"] <= 1)

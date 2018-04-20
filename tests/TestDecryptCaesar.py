@@ -16,6 +16,7 @@ class TestCaesar(TestCase):
     def test_lambda_handler(self):
 
         for test_case in test_cases:
+            print("test case: " + test_case["name"])
             event = {
                 "bucket": test_case["ocr_bucket"],
                 "key": test_case["ocr_key"],
@@ -41,11 +42,23 @@ class TestCaesar(TestCase):
             s3.Object(result["decryptedBucket"], result["decryptedKey"]).delete()
 
     def test_get_text(self):
+        print("test_get_text")
         DecryptCaesar.get_text("ist440grp2ocr", "jen_zodiacTest1.txt")
 
     def test_missingBucket(self):
+        print("test_missingBucket")
         input = {
             "key": "test"
         }
         result = DecryptCaesar.lambda_handler(input, test_context)
-        self.assertIsNotNone(result)
+        self.assertEqual({'failed': 'true'}, result)
+
+    def test_missing_file(self):
+        print("test_missing_file")
+        input = {
+            "bucket": "ist440grp2ocr",
+            "key": "nope",
+            "sourceLanguage": "en"
+        }
+        result = DecryptCaesar.lambda_handler(input, test_context)
+        self.assertEqual({'failed': 'true'}, result)

@@ -22,44 +22,47 @@ def lambda_handler(event, context):
     try:
         input_bucket = event["bucket"]
         input_key = event["key"]
-    except KeyError:
-        print("Bucket and key are required")
-        exit(1)
 
-    try:
-        language = event["sourceLanguage"]
-    except KeyError:
-        print("Source language missing, assuming English")
-        language = "en"
+        try:
+            language = event["sourceLanguage"]
+        except KeyError:
+            print("Source language missing, assuming English")
+            language = "en"
 
-    output_key = output_key_pattern % (input_key, method, language)
+        output_key = output_key_pattern % (input_key, method, language)
 
-    text = get_text(input_bucket, input_key)
+        text = get_text(input_bucket, input_key)
 
-    scorer = NgramFrequencyScorer(freq=lang_di(language))
+        scorer = NgramFrequencyScorer(freq=lang_di(language))
 
-    # Get every Caesar shift of the ciphertext
-    shifts = [CaesarCipher(n).decrypt(text) for n in range(25)]
+        # Get every Caesar shift of the ciphertext
+        shifts = [CaesarCipher(n).decrypt(text) for n in range(25)]
 
-    # Score each shift according to English character frequency.
-    # Get tuples that pair the score with the text.
-    scored_shifts = [(scorer.score(shift), shift) for shift in shifts]
+        # Score each shift according to English character frequency.
+        # Get tuples that pair the score with the text.
+        scored_shifts = [(scorer.score(shift), shift) for shift in shifts]
 
-    # Sort by score, descending order
-    scored_shifts.sort(reverse=True)
+        # Sort by score, descending order
+        scored_shifts.sort(reverse=True)
 
-    save_text(output_bucket, output_key, scored_shifts[0][1])
-    print(scored_shifts[0][1])
+        save_text(output_bucket, output_key, scored_shifts[0][1])
+        print(scored_shifts[0][1])
 
-    output = {
-        "method": method,
-        "confidence": scored_shifts[0][0],
-        "decryptedBucket": output_bucket,
-        "decryptedKey": output_key,
-        "sourceLanguage": language
-    }
+        output = {
+            "method": method,
+            "confidence": scored_shifts[0][0],
+            "decryptedBucket": output_bucket,
+            "decryptedKey": output_key,
+            "sourceLanguage": language
+        }
 
-    return output
+        return output
+
+    except:
+        output = {
+            "failed": "true"
+        }
+        return output
 
 
 def get_text(bucket, key):

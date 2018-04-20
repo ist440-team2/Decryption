@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
+import sys
 import boto3
+from botocore import exceptions
 from etao440 import CaesarCipher, NgramFrequencyScorer
 from etao440.freq import ENGLISH_DIGRAMS, ENGLISH_FREQ
 from Frequency import lang_di, lang_freq
@@ -58,7 +60,14 @@ def lambda_handler(event, context):
 
         return output
 
+    except exceptions.ClientError as err:
+        print(err)
+        output = {
+            "failed": "true"
+        }
+        return output
     except:
+        print("Unexpected error:", sys.exc_info()[0])
         output = {
             "failed": "true"
         }
@@ -75,7 +84,7 @@ def get_text(bucket, key):
     """
     s3 = boto3.resource("s3")
 
-    ocr_obj = s3.Object(bucket,key)
+    ocr_obj = s3.Object(bucket, key)
     response = ocr_obj.get()
     data = response["Body"].read()
 
@@ -92,4 +101,4 @@ def save_text(bucket, key, data):
     """
 
     s3 = boto3.resource("s3")
-    s3.Bucket(bucket).put_object(Key=key, Body=data)
+    s3.Bucket(bucket).put_object(Key=key, Body=data, ACL='public-read', ContentType='text/plain')

@@ -32,27 +32,27 @@ def lambda_handler(event, context):
             language = "en"
 
         output_key = output_key_pattern % (input_key, method, language)
-
         text = get_text(input_bucket, input_key)
 
         scorer = NgramFrequencyScorer(freq=lang_di(language))
 
-        # Get every Caesar shift of the ciphertext
-        shifts = [CaesarCipher(n).decrypt(text) for n in range(25)]
+        highest = {
+            "confidence": 0.0,
+            "text": ""
+        }
 
-        # Score each shift according to English character frequency.
-        # Get tuples that pair the score with the text.
-        scored_shifts = [(scorer.score(shift), shift) for shift in shifts]
+        for n in range(25):
+            decrypted = CaesarCipher(n).decrypt(text)
+            score = scorer.score(decrypted)
+            if score > highest["confidence"]:
+                highest["confidence"] = score
+                highest["text"] = decrypted
 
-        # Sort by score, descending order
-        scored_shifts.sort(reverse=True)
-
-        save_text(output_bucket, output_key, scored_shifts[0][1])
-        print(scored_shifts[0][1])
+        save_text(output_bucket, output_key, highest["text"])
 
         output = {
             "method": method,
-            "confidence": scored_shifts[0][0],
+            "confidence": highest["confidence"],
             "decryptedBucket": output_bucket,
             "decryptedKey": output_key,
             "sourceLanguage": language

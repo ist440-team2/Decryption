@@ -16,4 +16,7 @@ class TestCaesar(TestCase):
 
         for test_case in test_cases:
             print("test case: " + test_case["name"])
-            self.assertEqual(test_case["decrypted"], DecryptCaesar.lambda_handler(test_case["encrypted"], test_case["language"]))
+            result =  DecryptCaesar.lambda_handler(test_case["encrypted"], test_case["language"])
+            self.assertEqual(test_case["decrypted"], result["text"])
+            self.assertTrue(result["confidence"] >= 0)
+            self.assertTrue(result["confidence"] <= 1)

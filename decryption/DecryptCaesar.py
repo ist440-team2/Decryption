@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 
-import sys
-import boto3
-from botocore import exceptions
-from etao440 import CaesarCipher, NgramFrequencyScorer
-from etao440.freq import ENGLISH_DIGRAMS, ENGLISH_FREQ
-from Frequency import lang_di, lang_freq
+from etao440 import CaesarCipher
+from etao440.scorers import NgramFrequencyScorer
+from decryption.Frequency import lang_di, SPANISH_DIGRAMS, FRENCH_DIGRAMS
 
 
 def lambda_handler(text, language="en"):
@@ -31,5 +28,5 @@ def lambda_handler(text, language="en"):
             highest["confidence"] = score
             highest["text"] = decrypted
 
-    return highest["text"]
+    return highest
 

@@ -17,7 +17,7 @@ def lambda_handler(event, context):
     :return: a dictionary passed back to Lambda containing the input data, decrypted text, and confidence
     """
 
-    method = "Caesar"
+    method = "Vigenere"
     output_bucket = "ist440grp2-decrypted"
     output_key_pattern = "%s_%s_%s"
 
@@ -32,27 +32,27 @@ def lambda_handler(event, context):
             language = "en"
 
         output_key = output_key_pattern % (input_key, method, language)
-
         text = get_text(input_bucket, input_key)
-
         scorer = NgramFrequencyScorer(freq=lang_di(language))
 
-        # Get every Caesar shift of the ciphertext
-        shifts = VigenereCipher.decrypt(text)
+        highest = {
+            "confidence": 0.0,
+            "text": ""
+        }
 
-        # Score each shift according to English character frequency.
-        # Get tuples that pair the score with the text.
-        scored_shifts = [(scorer.score(shift), shift) for shift in shifts]
+        for key in keys([chr(x) for x in range(ord('A'), ord('C') + 1)], 4):
+            vc = VigenereCipher(key)
+            decrypted = vc.decrypt(text)
+            result = (scorer.score(decrypted), decrypted)
+            if result[0] > highest["confidence"]:
+                highest["confidence"] = result[0]
+                highest["text"] = result[1]
 
-        # Sort by score, descending order
-        scored_shifts.sort(reverse=True)
-
-        save_text(output_bucket, output_key, scored_shifts[0][1])
-        print(scored_shifts[0][1])
+        save_text(output_bucket, output_key, highest["text"])
 
         output = {
             "method": method,
-            "confidence": scored_shifts[0][0],
+            "confidence": highest["confidence"],
             "decryptedBucket": output_bucket,
             "decryptedKey": output_key,
             "sourceLanguage": language
@@ -102,3 +102,18 @@ def save_text(bucket, key, data):
 
     s3 = boto3.resource("s3")
     s3.Bucket(bucket).put_object(Key=key, Body=data, ACL='public-read', ContentType='text/plain')
+
+
+def keys(chars, num, prev=""):
+    """
+    Generates decryption keys
+    :param chars: the characters to include in the key
+    :param num: the max length of the key
+    :return: keys
+    """
+    for c in map(ord, chars):
+        if num == 1:
+            yield "".join([chr(c), prev])
+        else:
+            for k in keys(chars, num - 1, "".join([chr(c), prev])):
+                yield k

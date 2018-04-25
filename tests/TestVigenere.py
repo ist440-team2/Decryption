@@ -1,20 +1,17 @@
 from unittest import TestCase
 from CasesVigenere import test_cases
-import DecryptCaesar
+import DecryptVigenere
 import boto3
 
 test_context = {"test": "test"}
-test_method = "Caesar"
+test_method = "Vigenere"
 output_bucket = "ist440grp2-decrypted"
 
 
 class TestVigenere(TestCase):
     """
-    Test cases for DecryptCaesar
+    Test cases for DecryptVigenere
     """
-
-    def test_lambda_handler(self):
-
 
     def test_lambda_handler(self):
 
@@ -29,7 +26,7 @@ class TestVigenere(TestCase):
             # test the lambda function's output
             result = DecryptVigenere.lambda_handler(event, test_context)
             self.assertEqual(output_bucket, result["decryptedBucket"])
-            self.assertEqual("%s_%s_%s" % (test_case["ocr_key"], "Caesar", test_case["language"]), result["decryptedKey"])
+            self.assertEqual("%s_%s_%s" % (test_case["ocr_key"], "Vigenere", test_case["language"]), result["decryptedKey"])
             self.assertEqual(test_method, result["method"])
             self.assertTrue(result["confidence"] >= 0)
             self.assertTrue(result["confidence"] <= 1)

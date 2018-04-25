@@ -2,6 +2,7 @@ from unittest import TestCase
 from CasesVigenere import test_cases
 from decryption.DecryptVigenere import DecryptVigenere
 
+
 class TestVigenere(TestCase):
 
    def test_lambda_handler(self):

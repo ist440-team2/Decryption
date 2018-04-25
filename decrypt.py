@@ -3,7 +3,8 @@
 import sys
 import boto3
 from botocore import exceptions
-from decryption import DecryptCaesar
+from decryption.DecryptVigenere import DecryptVigenere
+from decryption.DecryptCaesar import DecryptCaesar
 
 
 def lambda_handler(event, context):
@@ -15,7 +16,6 @@ def lambda_handler(event, context):
     :return: a dictionary passed back to Lambda containing the input data, decrypted text, and confidence
     """
 
-    method = "Caesar"
     output_bucket = "ist440grp2-decrypted"
     output_key_pattern = "%s_%s_%s"
 
@@ -29,11 +29,21 @@ def lambda_handler(event, context):
             print("Source language missing, assuming English")
             language = "en"
 
+        try:
+            method = event["method"]
+        except KeyError:
+            method = "caesar"
+
+
         output_key = output_key_pattern % (input_key, method, language)
         text = get_text(input_bucket, input_key)
 
-        decryption = DecryptCaesar(event, context)
-        result = decryption
+        if method == "vigenere":
+            decryptor = DecryptVigenere()
+        else:
+            decryptor = DecryptCaesar()
+
+        result = decryptor.decrypt(text, language)
 
         save_text(output_bucket, output_key, result["text"])
 

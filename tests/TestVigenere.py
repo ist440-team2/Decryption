@@ -1,6 +1,6 @@
 from unittest import TestCase
 from CasesVigenere import test_cases
-import DecryptVigenere
+from decryption import DecryptVigenere
 import boto3
 
 test_context = {"test": "test"}

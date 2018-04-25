@@ -3,9 +3,7 @@
 import sys
 import boto3
 from botocore import exceptions
-from etao440 import CaesarCipher, NgramFrequencyScorer
-from etao440.freq import ENGLISH_DIGRAMS, ENGLISH_FREQ
-from Frequency import lang_di, lang_freq
+from decryption import DecryptCaesar
 
 
 def lambda_handler(event, context):
@@ -34,25 +32,14 @@ def lambda_handler(event, context):
         output_key = output_key_pattern % (input_key, method, language)
         text = get_text(input_bucket, input_key)
 
-        scorer = NgramFrequencyScorer(freq=lang_di(language))
+        decryption = DecryptCaesar(event, context)
+        result = decryption
 
-        highest = {
-            "confidence": 0.0,
-            "text": ""
-        }
-
-        for n in range(25):
-            decrypted = CaesarCipher(n).decrypt(text)
-            score = scorer.score(decrypted)
-            if score > highest["confidence"]:
-                highest["confidence"] = score
-                highest["text"] = decrypted
-
-        save_text(output_bucket, output_key, highest["text"])
+        save_text(output_bucket, output_key, result["text"])
 
         output = {
             "method": method,
-            "confidence": highest["confidence"],
+            "confidence": result["confidence"],
             "decryptedBucket": output_bucket,
             "decryptedKey": output_key,
             "sourceLanguage": language
@@ -72,6 +59,7 @@ def lambda_handler(event, context):
             "failed": "true"
         }
         return output
+
 
 
 def get_text(bucket, key):

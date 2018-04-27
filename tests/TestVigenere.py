@@ -5,7 +5,7 @@ from decryption.DecryptVigenere import DecryptVigenere
 
 class TestVigenere(TestCase):
 
-   def test_lambda_handler(self):
+    def test_lambda_handler(self):
 
         for test_case in test_cases:
             print("test case: " + test_case["name"])

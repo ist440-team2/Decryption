@@ -20,13 +20,14 @@ class DecryptVigenere:
             "text": ""
         }
 
-        for key in self.keys([chr(x) for x in range(ord('A'), ord('C') + 1)], 4):
+        for key in self.keys([chr(x) for x in range(ord('A'), ord('E') + 1)], 4):
             vc = VigenereCipher(key)
             decrypted = vc.decrypt(text)
             result = (scorer.score(decrypted), decrypted)
             if result[0] > highest["confidence"]:
                 highest["confidence"] = result[0]
                 highest["text"] = result[1]
+
         return highest
 
     def keys(self, chars, num, prev=""):
